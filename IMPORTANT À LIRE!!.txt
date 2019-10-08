@@ -1,0 +1,77 @@
+                           _                _ 
+  /\/\   ___ _ __ ___ __ _| |_ ___   __   _/ |
+ /    \ / _ \ '__/ __/ _` | __/ _ \  \ \ / / |
+/ /\/\ \  __/ | | (_| (_| | || (_) |  \ V /| |
+\/    \/\___|_|  \___\__,_|\__\___/    \_/ |_|
+                                              
+
+As-salam ’alaykoum,
+voici l’état de l’avancement de l’app :
+L’app est dupliqué en 4 : dz/fr/es/uk 
+en principe les 4 apps ont les mêmes fonctionnalités (avec la possibilité de les améliorer plus tard), chacune est traduit selon sa langue
+l’architecture de développement est en MVC :
+/models : contient les classes (chaque classe représente une table dans la bdd)
+/controller: les contrôles de chaque pages
+/views: les pages (pas 100% clean)
+
+Il existe deux types d’utilisateurs :
+1- Président d’une équipe (il y en existe plusieurs dans chaque pays):
+- Gestion de ses propres joueurs (OK)
+- Mercato (marché des joueurs) - envoi d’une demande de transfert (OK)
+2- Responsable des transferts (en principe il existe un seul) 
+- Validation des demandes de transferts (OK)
+ce qu’il y a à faire :
+dans chaque controller/interface_resp.php , après la validation du transfert reste à :
+- Modifier l’équipe du joueur après chaque achat effectué (utilisation de la classe players/changer l’attribut « club » en respectant le cryptage
+- Supprimer le joueur de son ancien équipe, voir via la bdd de son pays 
+- Ajouter le joueur vers sa nouvelle équipe, voir via la bdd  du nouveau pays
+- Diminuer le badge de l’équipe du président après chaque achat effectué
+les classes : /models/class.joueurs.php /class.jugadores.php / class.equipes.php sont déjà prête pour ça rester à configurer la connexion vers les bdd des pays
+l’attribut: « country » aide pour choisir le pays (la bdd du pays), « player name » pour récupérer le joueur, « club » pour récupérer son équipe…
+- Affichage du tableau des transferts effectués dans la page d’accueil (recopier le même code qui existe dans /view/interface_resp_accueil.php
+Les codes sont commentés/ call me if you need help
+— — — — — — — — — — — — — — — —
+Cryptages :
+table players :
+Cryptage avec césar clé 24
+table users :
+Cryptage avec césar clé 5 / password : césar 5+ sha1
+
+— —  — — — — — — — — — — — — — — —— 
+Liste des utilisateurs :
+ALGÉRIENS :
+- Belkacem Houassi/MotDePasse14 (JSM Bejaia)
+- Mohamed Hireche/MotDePasse15 (MC Alger)
+- Ali Haddad/MotDePasse16 (USM Alger)
+- Chérif Mellal/MotDePasse17 (JS Kabylie)
+FRANÇAIS :
+- Jean-Miche Aulas/MotDePasse6 (Olympique lyonnais)
+- Nasser Al-Khelaïfi/MotDePasse7 (PSG)
+- Jean-Pierre Rivère/MotDePasse8 (OGC Nice)
+ANGLAIS :
+- Khaldoon Al Mubarak/MotDePasse3 (Manchester City)
+- Tom Werner/MotDePasse10 (Liverpool FC)
+- Daniel Levy/MotDePasse11 (Tottenham)
+- Bruce Buck/MotDePasse12 (Chelsea)
+ESPAGNOLE :
+- Josep Maria Bartomeu/MotDePasse1 (FC Barcelone)
+- Florentino Pérez/MotDePasse2 (Real Madrid)
+- Enrique Cerezo/MotDePasse4 (Atlético Madrid)
+- Anil Murthy/MotDePasse5 (Valencia)
+
+RESPONSABLE DES TRANSFERTS :
+INFANTINO Gianni/MotDePasse13
+
+(pour la démo j’ai mis en valeur les champs pour se connecter rapidement)
+— — — — — — — — — — — — — — — — — — 
+
+Configuration :
+dans models/class.db_mercato.php
+
+par défault:
+HOST: localhost
+username: root
+password: (empty)
+db_name: db
+
+--> créer une bdd nommé db & importer db.sql ---> DONE

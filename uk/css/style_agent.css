@@ -1,0 +1,51 @@
+body{
+
+}
+
+div.example{
+  border: 1px solid black;
+  overflow: ellipsis;
+}
+
+.userName{
+  text-transform: capitalize;
+}
+
+.contactInfo{
+  padding: 10px 20px
+}
+
+.contactInfo table td{
+  padding: 3px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 180px;
+  white-space: nowrap;
+}
+
+img.centeredImage{
+  display: block;
+  vertical-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px
+}
+
+.card{
+  background-color: #f5f5f5;
+  margin: 10px auto;
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+  border: 1px solid darkgrey;
+}
+
+.card p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.departmentLabel{
+  float: right;
+  margin-top: -20px;
+}
